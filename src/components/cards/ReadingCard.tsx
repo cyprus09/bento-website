@@ -1,32 +1,105 @@
-import BentoCard from '@/components/bento/BentoCard';
-import { BookOpen, Clock } from 'lucide-react';
+import { useState, useEffect } from "react";
+import BentoCard from "@/components/bento/BentoCard";
+import { BookOpen } from "lucide-react";
+import Image from "next/image";
+
+const books = [
+  {
+    title: "1984",
+    author: "George Orwell",
+    cover: "/images/books/1984.png",
+  },
+  {
+    title: "The Underground Railroad",
+    author: "Colson Whitehead",
+    cover: "/images/books/underground-railroad.png",
+  },
+  {
+    title: "Never Let Me Go",
+    author: "Kazuo Ishiguro",
+    cover: "/images/books/never-let-me-go.png",
+  },
+];
 
 const ReadingCard = () => {
+  const [currentBookIndex, setCurrentBookIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+
+      setTimeout(() => {
+        setCurrentBookIndex(prev => (prev + 1) % books.length);
+
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 50);
+      }, 300);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentBook = books[currentBookIndex];
+
   return (
-    <BentoCard 
-      gradient="from-teal-400 to-orange-500 dark:from-teal-500 dark:to-orange-600"
-      className="text-white"
+    <BentoCard
+      gradient="from-amber-100/80 to-orange-100/80 dark:from-orange-900/30 dark:to-amber-900/30"
+      className="text-orange-800 dark:text-orange-200"
       isClickable={true}
     >
       <div className="flex flex-col h-full">
         <div className="flex items-center gap-3 mb-3">
-          <div className="p-2 bg-white/20 rounded-lg">
-            <BookOpen className="w-5 h-5" />
+          <div className="p-1 bg-orange-500/20 rounded-lg">
+            <BookOpen className="w-5 h-5 text-orange-800 dark:text-orange-200" />
           </div>
           <h3 className="font-semibold text-sm">Currently Reading</h3>
         </div>
-        
-        <div className="flex-1 flex flex-col justify-center items-center text-center">
-          <div className="w-16 h-20 bg-white/20 rounded-lg mb-3 flex items-center justify-center">
-            <BookOpen className="w-6 h-6 text-white/60" />
+
+        <div className="flex-1 flex flex-col justify-center">
+          <div className="flex items-center gap-3">
+            <div className="relative w-14 h-14 bg-white/20 rounded-lg overflow-hidden group">
+              <Image
+                src={currentBook.cover}
+                alt={`${currentBook.title} artwork`}
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+            </div>
+
+            <div className="flex-1 min-w-0">
+              <h4
+                className={`font-medium text-xs transition-opacity duration-2000 ${
+                  isTransitioning ? "opacity-0" : "opacity-100"
+                }`}
+                title={currentBook.title}
+              >
+                {currentBook.title}
+              </h4>
+              <p
+                className={`text-white/80 text-xs transition-opacity duration-2000 ${
+                  isTransitioning ? "opacity-0" : "opacity-100"
+                }`}
+                title={currentBook.author}
+              >
+                {currentBook.author}
+              </p>
+            </div>
           </div>
-          <h4 className="font-medium text-sm mb-1">System Design Interview</h4>
-          <p className="text-white/80 text-xs">Alex Xu</p>
         </div>
-        
-        <div className="flex items-center gap-2 text-white/80 text-xs">
-          <Clock className="w-3 h-3" />
-          <span>Chapter 4 of 15</span>
+
+        <div className="flex items-center justify-around text-white/80 text-xs mt-1">
+          <div className="flex gap-1">
+            {books.map((_, index) => (
+              <div
+                key={index}
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-2000 ${
+                  index === currentBookIndex ? "bg-white" : "bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </BentoCard>

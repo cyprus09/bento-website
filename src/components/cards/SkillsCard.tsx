@@ -9,8 +9,8 @@ const SkillsCard = () => {
   return (
     <>
       <BentoCard
-        gradient="from-stone-50 to-amber-100 dark:from-amber-500 dark:to-orange-700"
-        className="text-orange-900 dark:text-white cursor-pointer hover:scale-105"
+        gradient="from-stone-100/90 to-amber-100/90 dark:from-amber-900/40 dark:to-orange-800/40"
+        className="text-orange-800 dark:text-orange-100 cursor-pointer hover:scale-105"
         isClickable={true}
         onClick={() => setIsModalOpen(true)}
       >

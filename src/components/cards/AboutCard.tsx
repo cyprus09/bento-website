@@ -4,8 +4,8 @@ import { User, Heart } from "lucide-react";
 const AboutCard = () => {
   return (
     <BentoCard
-      gradient="from-stone-100 to-orange-100 dark:from-orange-600 dark:via-orange-500 dark:to-amber-800"
-      className="text-orange-900 dark:text-orange-100"
+      gradient="from-orange-50 to-amber-50 dark:from-orange-900/40 dark:via-amber-900/30 dark:to-orange-800/40"
+      className="text-orange-800 dark:text-orange-100"
       isClickable={true}
     >
       <div className="flex items-start gap-4 h-full">
@@ -15,13 +15,14 @@ const AboutCard = () => {
         <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
           <div>
             <h2 className="text-xl font-semibold mb-3">About Me</h2>
-            <p className="text-orange-800/90 dark:text-orange-200/90 text-sm leading-relaxed">
-              Currently learning full stack, cloud and GenAI. Excited to talk and connect with new passionate people about technology!
+            <p className="text-orange-800/90 dark:text-orange-200/90 text-sm leading-relaxed justify-around">
+              Currently learning Fullstack, System Design and GenAI. Excited to talk and connect with new passionate
+              people about technology!
             </p>
           </div>
 
-          <div className="flex items-center gap-2 mt-1 pt-1 border-t border-orange-500/20">
-            <Heart className="w-4 h-4 text-red-500" />
+          <div className="flex items-center gap-2 mt-1 border-t border-orange-500/20">
+            <Heart className="w-5 h-5 text-red-500" />
             <span className="text-orange-800/80 dark:text-orange-200/80 text-sm font-medium">
               Building the future, one line at a time
             </span>

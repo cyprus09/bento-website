@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import BentoCard from '@/components/bento/BentoCard';
-import { Briefcase } from 'lucide-react';
-import WorkModal from '@/components/modals/WorkModal';
-import { experienceCard } from '@/data/workData';
+import { useState } from "react";
+import BentoCard from "@/components/bento/BentoCard";
+import { Briefcase } from "lucide-react";
+import WorkModal from "@/components/modals/WorkModal";
+import { experienceCard } from "@/data/workData";
 
 const WorkCard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
-      <BentoCard 
-        gradient="from-orange-400 to-red-500 dark:from-orange-600 dark:to-red-700"
+      <BentoCard
+        gradient="from-orange-300/90 to-red-400/90 dark:from-orange-800/80 dark:to-red-800/70"
         className="text-white"
         isClickable={true}
         onClick={() => setIsModalOpen(true)}
@@ -26,25 +26,20 @@ const WorkCard = () => {
               <p className="text-white/80 text-xs mb-2">Click to Expand</p>
             </div>
           </div>
-          
+
           <div className="flex-1 flex flex-col justify-top space-y-3">
             {experienceCard.map((exp, index) => (
               <div key={index} className="text-left">
                 <div className="text-m font-m">{exp.title}</div>
                 <div className="text-white/80 text-xs">{exp.company}</div>
-                {exp.current && (
-                  <div className="text-green-300 text-xs">Current</div>
-                )}
+                {exp.current && <div className="text-green-300 text-xs">Current</div>}
               </div>
             ))}
           </div>
         </div>
       </BentoCard>
 
-      <WorkModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
+      <WorkModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };

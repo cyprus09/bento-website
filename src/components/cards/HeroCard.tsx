@@ -1,20 +1,20 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import BentoCard from '@/components/bento/BentoCard';
-import { MapPin, Clock, GraduationCap } from 'lucide-react';
-import Image from 'next/image';
-import Avatar from '../../../public/images/avatar.jpg';
+import { useState, useEffect } from "react";
+import BentoCard from "@/components/bento/BentoCard";
+import { MapPin, Clock, GraduationCap } from "lucide-react";
+import Image from "next/image";
+import Avatar from "../../../public/images/avatar.jpg";
 
 const HeroCard = () => {
-  const [currentTime, setCurrentTime] = useState('');
+  const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
     const updateTime = () => {
-      const time = new Date().toLocaleTimeString('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour: '2-digit',
-        minute: '2-digit',
+      const time = new Date().toLocaleTimeString("en-US", {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        minute: "2-digit",
         hour12: true,
       });
       setCurrentTime(time);
@@ -27,8 +27,8 @@ const HeroCard = () => {
   }, []);
 
   return (
-    <BentoCard 
-      gradient="from-orange-400 via-amber-500 to-red-500 dark:from-orange-600 dark:via-amber-600 dark:to-red-600"
+    <BentoCard
+      gradient="from-orange-500 via-amber-500 to-red-500 dark:from-orange-700 dark:via-amber-600/80 dark:to-red-900/80"
       className="text-white"
     >
       <div className="flex items-center justify-end text-white/80 text-xs mb-4">
@@ -47,28 +47,36 @@ const HeroCard = () => {
       <div className="flex-1 flex flex-col items-center justify-center text-center">
         <div className="mb-4">
           <div className="relative w-[120px] h-[120px] mx-auto">
-            <Image 
+            <Image
               src={Avatar}
-              alt="Mayank Pallai" 
+              alt="Mayank Pallai"
               fill
-              className="rounded-full object-cover border-2 border-white/20" 
+              className="rounded-full object-cover border-2 border-white/20"
             />
           </div>
         </div>
-        
+
         <h1 className="text-3xl lg:text-4xl font-bold mb-2 leading-tight">
           Mayank <span className="text-yellow-300">Pallai</span>
         </h1>
-        
+
         <p className="text-white/90 text-m mb-2 leading-relaxed max-w-xs">
-          Software Engineer at{' '}
-          <span className="font-semibold text-yellow-300"><a href='https://www.sprinklr.com/' target='_blank'><u>Sprinklr</u></a></span>
+          Software Engineer at{" "}
+          <span className="font-semibold text-yellow-300">
+            <a href="https://www.sprinklr.com/" target="_blank">
+              <u>Sprinklr</u>
+            </a>
+          </span>
         </p>
 
         <div className="flex items-center gap-1 text-white/80 text-sm">
           <GraduationCap className="w-4 h-4" />
-          <span>B.Eng. Electrical & Electronic Engineering, {' '}</span>
-          <span className="font-semibold text-yellow-300"><a href='https://www.ntu.edu.sg/' target='_blank'><u>(NTU Singapore)</u></a></span>
+          <span>B.Eng. Electrical & Electronic Engineering, </span>
+          <span className="font-semibold text-yellow-300">
+            <a href="https://www.ntu.edu.sg/" target="_blank">
+              <u>(NTU Singapore)</u>
+            </a>
+          </span>
         </div>
       </div>
 

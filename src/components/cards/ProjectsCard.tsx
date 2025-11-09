@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import BentoCard from '@/components/bento/BentoCard';
-import { Code } from 'lucide-react';
-import ProjectsModal from '@/components/modals/ProjectsModal';
+import { useState } from "react";
+import BentoCard from "@/components/bento/BentoCard";
+import { Code } from "lucide-react";
+import ProjectsModal from "@/components/modals/ProjectsModal";
 
 const ProjectsCard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
-      <BentoCard 
-        gradient="from-red-500 to-orange-600 dark:from-red-600 dark:to-orange-700"
+      <BentoCard
+        gradient="from-red-400/90 to-orange-500/90 dark:from-red-800/70 dark:to-orange-800/70"
         className="text-white cursor-pointer hover:scale-105 transition-transform duration-200"
         isClickable={true}
         onClick={() => setIsModalOpen(true)}

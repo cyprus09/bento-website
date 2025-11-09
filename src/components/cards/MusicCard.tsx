@@ -28,7 +28,7 @@ const MusicCard = () => {
 
   return (
     <BentoCard
-      gradient={`${currentTrack.color} dark:from-orange-700 dark:to-red-700`}
+      gradient={`${currentTrack.color} dark:from-orange-800/70 dark:to-red-800/60`}
       className="text-white transition-all duration-2000"
       isClickable={true}
     >
