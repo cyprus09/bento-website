@@ -29,7 +29,7 @@ const ReadingCard = () => {
   return (
     <BentoCard
       gradient={`${currentBook.color}`}
-      className="text-white dark:text-orange-200 transition-all ease-in duration-2000"
+      className="text-white dark:text-orange-200 cursor-pointer hover:scale-105"
       isClickable={true}
     >
       <div className="hidden from-red-400 to-orange-400"/>

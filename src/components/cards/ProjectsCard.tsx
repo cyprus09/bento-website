@@ -10,7 +10,7 @@ const ProjectsCard = () => {
     <>
       <BentoCard
         gradient="from-red-500 to-orange-400 dark:from-red-600 dark:to-orange-600"
-        className="text-white cursor-pointer hover:scale-105 transition-transform duration-200"
+        className="text-white cursor-pointer hover:scale-105"
         isClickable={true}
         onClick={() => setIsModalOpen(true)}
       >
