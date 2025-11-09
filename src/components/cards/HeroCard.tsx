@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import BentoCard from '@/components/bento/BentoCard';
-import { ArrowRight, MapPin, Clock } from 'lucide-react';
+import { MapPin, Clock, GraduationCap } from 'lucide-react';
 import Image from 'next/image';
 import Avatar from '../../../public/images/avatar.jpg';
 
@@ -21,7 +21,7 @@ const HeroCard = () => {
     };
 
     updateTime();
-    const interval = setInterval(updateTime, 60000); // Update every minute
+    const interval = setInterval(updateTime, 60000);
 
     return () => clearInterval(interval);
   }, []);
@@ -60,10 +60,16 @@ const HeroCard = () => {
           Mayank <span className="text-yellow-300">Pallai</span>
         </h1>
         
-        <p className="text-white/90 text-m mb-4 leading-relaxed max-w-xs">
+        <p className="text-white/90 text-m mb-2 leading-relaxed max-w-xs">
           Software Engineer at{' '}
           <span className="font-semibold text-yellow-300"><a href='https://www.sprinklr.com/' target='_blank'><u>Sprinklr</u></a></span>
         </p>
+
+        <div className="flex items-center gap-1 text-white/80 text-sm">
+          <GraduationCap className="w-4 h-4" />
+          <span>B.Eng. Electrical & Electronic Engineering, {' '}</span>
+          <span className="font-semibold text-yellow-300"><a href='https://www.ntu.edu.sg/' target='_blank'><u>(NTU Singapore)</u></a></span>
+        </div>
       </div>
 
       <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -translate-y-12 translate-x-12" />

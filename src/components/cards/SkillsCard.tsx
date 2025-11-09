@@ -1,39 +1,30 @@
-import BentoCard from '@/components/bento/BentoCard';
-import { Zap } from 'lucide-react';
+import BentoCard from "@/components/bento/BentoCard";
+import { Zap } from "lucide-react";
+import { useState } from "react";
+import SkillsModal from "../modals/SkillsModal";
 
 const SkillsCard = () => {
-  const skills = ['React', 'Go', 'TypeScript', 'Python', 'PostgreSQL'];
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <BentoCard 
-      gradient="from-pink-500 to-orange-600 dark:from-pink-600 dark:to-orange-700"
-      className="text-white"
-      isClickable={true}
-    >
-      <div className="flex flex-col h-full">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 bg-white/20 rounded-lg">
-            <Zap className="w-5 h-5" />
+    <>
+      <BentoCard
+        gradient="from-stone-50 to-amber-100 dark:from-amber-500 dark:to-orange-700"
+        className="text-orange-900 dark:text-white cursor-pointer hover:scale-105"
+        isClickable={true}
+        onClick={() => setIsModalOpen(true)}
+      >
+        <div className="flex flex-col h-full justify-center items-center text-center">
+          <div className="p-3 bg-orange-500/20 rounded-lg mb-3">
+            <Zap className="w-6 h-6 text-orange-700 dark:text-orange-200" />
           </div>
-          <h3 className="font-semibold">Tech Stack</h3>
+          <h3 className="font-semibold text-lg mb-1">Tech Stack</h3>
+          <p className="text-sm opacity-70">Click to expand</p>
         </div>
-        
-        <div className="flex-1 flex flex-col justify-center">
-          <div className="space-y-2">
-            {skills.slice(0, 3).map((skill, index) => (
-              <div key={skill} className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full bg-white/60`} />
-                <span className="text-sm">{skill}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        <div className="text-white/80 text-xs mt-auto">
-          +{skills.length - 3} more technologies
-        </div>
-      </div>
-    </BentoCard>
+      </BentoCard>
+
+      <SkillsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 };
 

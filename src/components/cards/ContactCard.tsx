@@ -1,38 +1,37 @@
 import BentoCard from '@/components/bento/BentoCard';
-import { Mail, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Mail, Github, Linkedin, FileUser } from 'lucide-react';
 
 const ContactCard = () => {
   const contacts = [
-    { icon: Mail, label: 'Email', value: 'mayankpallai@gmail.com', href: 'mailto:mayankpallai@gmail.com' },
-    { icon: Github, label: 'GitHub', value: 'github.com/mayank', href: 'https://github.com' },
-    { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/mayank', href: 'https://linkedin.com' },
+    { icon: Mail, label: 'Email', href: 'mailto:mayankpallai@gmail.com' },
+    { icon: Github, label: 'GitHub', href: 'https://github.com/cyprus09' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/mayank-pallai-bb331921a/' },
+    { icon: FileUser, label: 'Resume', href: '/images/resume.pdf' },
   ];
 
   return (
     <BentoCard 
-      gradient="from-purple-500 to-orange-600 dark:from-purple-600 dark:to-orange-700"
+      gradient="from-orange-500 to-red-500 dark:from-orange-700 dark:to-red-700"
       className="text-white"
-      isClickable={true}
+      isClickable={false}
     >
-      <div className="flex items-start justify-between mb-6">
+      <div className="flex items-start justify-between mb-3">
         <div>
-          <h3 className="font-semibold text-xl mb-2">Let&apos;s Connect</h3>
+          <h3 className="font-semibold text-xl mb-1">Let&apos;s Connect</h3>
           <p className="text-white/80 text-sm">
             Always open to discussing new opportunities and interesting projects.
           </p>
         </div>
-        <ExternalLink className="w-5 h-5 text-white/60" />
       </div>
       
-      <div className="space-y-3">
+      <div className="space-y-2">
         {contacts.map((contact, index) => {
           const IconComponent = contact.icon;
           return (
             <div key={index} className="flex items-center gap-3 p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
               <IconComponent className="w-4 h-4 text-white/80" />
               <div className="flex-1 min-w-0">
-                <div className="text-white/70 text-xs">{contact.label}</div>
-                <div className="text-sm truncate">{contact.value}</div>
+                <a href={contact.href} target='_blank'><div className="text-white/70 text-sm">{contact.label}</div></a>
               </div>
             </div>
           );
