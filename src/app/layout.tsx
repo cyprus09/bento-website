@@ -18,20 +18,16 @@ export const metadata: Metadata = {
     description: 'Product Engineer at Sprinklr building scalable solutions with modern technologies.',
     siteName: 'Mayank Pallai Portfolio',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Mayank Pallai - Software Engineer',
-    description: 'Product Engineer at Sprinklr building scalable solutions with modern technologies.',
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-  },
   robots: {
     index: true,
     follow: true,
   },
 };
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1
+}
 
 export default function RootLayout({
   children,
@@ -41,7 +37,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Theme script to prevent flash */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
