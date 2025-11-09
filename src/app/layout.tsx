@@ -1,22 +1,23 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Mayank Pallai - Software Engineer',
-  description: 'Product Engineer at Sprinklr building scalable solutions with modern technologies.',
-  keywords: ['Software Engineer', 'Full Stack Developer', 'React', 'TypeScript', 'Go', 'Next.js'],
-  authors: [{ name: 'Mayank Pallai' }],
-  creator: 'Mayank Pallai',
+  title: "Mayank Pallai - Software Engineer",
+  description: "Product Engineer at Sprinklr building scalable solutions with modern technologies.",
+  keywords: ["Software Engineer", "Full Stack Developer", "React", "TypeScript", "Go", "Next.js"],
+  authors: [{ name: "Mayank Pallai" }],
+  creator: "Mayank Pallai",
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://mayankpallai.dev',
-    title: 'Mayank Pallai - Software Engineer',
-    description: 'Product Engineer at Sprinklr building scalable solutions with modern technologies.',
-    siteName: 'Mayank Pallai Portfolio',
+    type: "website",
+    locale: "en_US",
+    url: "https://mayankpallai.dev",
+    title: "Mayank Pallai - Software Engineer",
+    description: "Product Engineer at Sprinklr building scalable solutions with modern technologies.",
+    siteName: "Mayank Pallai Portfolio",
   },
   robots: {
     index: true,
@@ -26,14 +27,10 @@ export const metadata: Metadata = {
 
 export const viewport = {
   width: "device-width",
-  initialScale: 1
-}
+  initialScale: 1,
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -55,6 +52,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
