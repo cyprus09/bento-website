@@ -28,7 +28,7 @@ const HeroCard = () => {
 
   return (
     <BentoCard
-      gradient="from-orange-500 via-amber-500 to-red-500 dark:from-orange-700 dark:via-amber-600/80 dark:to-red-900/80"
+      gradient="from-orange-500 via-amber-500 to-red-500 dark:from-orange-600 dark:via-amber-500 dark:to-red-800"
       className="text-white"
     >
       <div className="flex items-center justify-end text-white/80 text-xs mb-4">

@@ -11,7 +11,7 @@ const ContactCard = () => {
 
   return (
     <BentoCard
-      gradient="from-orange-400/90 to-red-400/90 dark:from-orange-800/80 dark:to-red-800/70"
+      gradient="from-orange-400 to-red-400 dark:from-orange-800/80 dark:to-red-800/70"
       className="text-white"
       isClickable={false}
     >

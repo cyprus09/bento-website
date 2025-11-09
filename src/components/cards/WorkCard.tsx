@@ -11,7 +11,7 @@ const WorkCard = () => {
   return (
     <>
       <BentoCard
-        gradient="from-orange-300/90 to-red-400/90 dark:from-orange-800/80 dark:to-red-800/70"
+        gradient="from-orange-400 to-red-500/90 dark:from-orange-500 dark:to-red-700"
         className="text-white"
         isClickable={true}
         onClick={() => setIsModalOpen(true)}

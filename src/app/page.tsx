@@ -4,7 +4,7 @@ import AnimatedBackground from '@/ui/AnimatedBackground';
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen bg-gradient-to-br from-orange-100 via-amber-65 to-stone-50 dark:from-orange-700 dark:via-red-600 dark:to-amber-750 transition-colors duration-300 flex flex-col overflow-hidden">
+    <main className="relative min-h-screen bg-gradient-to-br from-orange-200 via-amber-100 to-stone-50 dark:from-orange-500 dark:via-red-600 dark:to-amber-800 transition-colors duration-300 flex flex-col overflow-hidden">
       <AnimatedBackground />
       
       <div className="relative z-10 container mx-auto px-4 py-4 lg:px-6 lg:py-6 max-w-6xl flex-1 flex flex-col">
