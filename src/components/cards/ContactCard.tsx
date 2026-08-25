@@ -1,5 +1,5 @@
 import BentoCard from "@/components/bento/BentoCard";
-import { Mail, Github, Linkedin, FileUser } from "lucide-react";
+import { Mail, Github, Linkedin, FileUser, BookOpenText } from "lucide-react";
 import { accent } from "@/data/accentColors";
 
 const ContactCard = () => {
@@ -8,6 +8,7 @@ const ContactCard = () => {
     { icon: Github, label: "GitHub", href: "https://github.com/cyprus09" },
     { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/mayank-pallai-bb331921a/" },
     { icon: FileUser, label: "Resume", href: "/images/resume.pdf" },
+    { icon: BookOpenText, label: "Blog", href: "https://dev.to/cyprus09" },
   ];
 
   return (
