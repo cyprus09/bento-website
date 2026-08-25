@@ -3,6 +3,7 @@ import BentoCard from "@/components/bento/BentoCard";
 import { Music } from "lucide-react";
 import Image from "next/image";
 import { playlist } from "@/data/musicData";
+import { accent } from "@/data/accentColors";
 
 const MusicCard = () => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
@@ -27,28 +28,18 @@ const MusicCard = () => {
   const currentTrack = playlist[currentTrackIndex];
 
   return (
-    <BentoCard
-      gradient={`${currentTrack.color}`}
-      className="text-white cursor-pointer hover:scale-105"
-      isClickable={true}
-    >
-      <div
-        className="hidden
-        from-blue-400 to-purple-500
-        from-amber-300 to-orange-500
-        from-orange-400 to-red-500"
-      />
+    <BentoCard hoverGlow={accent.glow} className="text-gray-900 dark:text-gray-100" isClickable={true}>
       <div className="flex flex-col h-full">
         <div className="flex items-center gap-3 mb-3">
-          <div className="p-2 bg-white/20 rounded-lg">
-            <Music className="w-5 h-5" />
+          <div className={`p-2 rounded-lg ${accent.iconBg}`}>
+            <Music className={`w-5 h-5 ${accent.iconText}`} />
           </div>
           <h3 className="font-semibold text-sm">Songs on Repeat</h3>
         </div>
 
         <div className="flex-1 flex flex-col justify-center">
           <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 bg-white/20 rounded-lg overflow-hidden group">
+            <div className="relative w-12 h-12 rounded-lg overflow-hidden group">
               <Image
                 src={currentTrack.artwork}
                 alt={`${currentTrack.album} artwork`}
@@ -57,18 +48,18 @@ const MusicCard = () => {
               />
 
               <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                <div className="flex gap-1 items-end">
+                <div className="flex gap-1 items-end h-4">
                   <div
-                    className="w-1 bg-white rounded-full animate-pulse"
-                    style={{ height: "8px", animationDelay: "0ms" }}
+                    className="w-1 bg-white rounded-full animate-equalize"
+                    style={{ height: "16px", animationDelay: "0ms" }}
                   ></div>
                   <div
-                    className="w-1 bg-white rounded-full animate-pulse"
-                    style={{ height: "12px", animationDelay: "200ms" }}
+                    className="w-1 bg-white rounded-full animate-equalize"
+                    style={{ height: "16px", animationDelay: "0.3s" }}
                   ></div>
                   <div
-                    className="w-1 bg-white rounded-full animate-pulse"
-                    style={{ height: "6px", animationDelay: "400ms" }}
+                    className="w-1 bg-white rounded-full animate-equalize"
+                    style={{ height: "16px", animationDelay: "0.15s" }}
                   ></div>
                 </div>
               </div>
@@ -84,7 +75,7 @@ const MusicCard = () => {
                 {currentTrack.title}
               </h4>
               <p
-                className={`text-white/80 text-xs truncate transition-opacity duration-2000 ${
+                className={`text-gray-500 dark:text-gray-400 text-xs truncate transition-opacity duration-2000 ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}
                 title={currentTrack.artist}
@@ -92,7 +83,7 @@ const MusicCard = () => {
                 {currentTrack.artist}
               </p>
               <p
-                className={`text-white/60 text-xs truncate transition-opacity duration-2000 ${
+                className={`text-gray-400 dark:text-gray-500 text-xs truncate transition-opacity duration-2000 ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}
                 title={currentTrack.album}
@@ -103,13 +94,13 @@ const MusicCard = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-around text-white/80 text-xs mt-3">
+        <div className="flex items-center justify-around text-xs mt-3">
           <div className="flex gap-1">
             {playlist.map((_, index) => (
               <div
                 key={index}
                 className={`w-1.5 h-1.5 rounded-full transition-all duration-2000 ${
-                  index === currentTrackIndex ? "bg-white" : "bg-white/40"
+                  index === currentTrackIndex ? accent.bullet : "bg-gray-300 dark:bg-white/20"
                 }`}
               />
             ))}

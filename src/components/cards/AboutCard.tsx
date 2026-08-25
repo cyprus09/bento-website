@@ -1,28 +1,25 @@
 import BentoCard from "@/components/bento/BentoCard";
 import { User, Heart } from "lucide-react";
+import { accent } from "@/data/accentColors";
 
 const AboutCard = () => {
   return (
-    <BentoCard
-      gradient="from-orange-200 to-amber-100 dark:from-orange-900/40 dark:via-amber-900/30 dark:to-orange-800/40"
-      className="text-orange-800 dark:text-orange-100"
-      isClickable={true}
-    >
-      <div className="flex items-start gap-4 h-full">
-        <div className="p-3 bg-orange-500/20 rounded-xl shrink-0">
-          <User className="w-6 h-6 text-orange-800 dark:text-orange-200" />
+    <BentoCard className="text-gray-900 dark:text-gray-100" isClickable={false}>
+      <div className="flex items-start gap-4 h-full lg:h-full">
+        <div className={`p-3 rounded-xl shrink-0 ${accent.iconBg}`}>
+          <User className={`w-6 h-6 ${accent.iconText}`} />
         </div>
-        <div className="flex-1 min-w-0 flex flex-col justify-between h-full">
+        <div className="flex-1 min-w-0 flex flex-col justify-between lg:h-full">
           <div>
-            <h2 className="text-xl font-semibold mb-3">About Me</h2>
-            <p className="text-orange-800/90 dark:text-orange-200/90 text-sm leading-relaxed justify-around">
+            <h2 className="text-xl font-semibold mb-2">About Me</h2>
+            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
               Currently learning Fullstack, System Design and GenAI. Excited to talk and connect with new passionate people about technology!
             </p>
           </div>
 
-          <div className="flex items-center gap-2 mt-1 border-t border-orange-500/20">
-            <Heart className="w-5 h-5 text-red-500" />
-            <span className="text-orange-800/80 dark:text-orange-200/80 text-sm font-medium mt-1">
+          <div className="flex items-center gap-2 mt-2 pt-2 border-t border-gray-200/70 dark:border-white/10">
+            <Heart className="w-5 h-5 text-rose-500" />
+            <span className="text-gray-600 dark:text-gray-300 text-sm font-medium">
               Building the future, one line at a time
             </span>
           </div>

@@ -27,38 +27,38 @@ const BentoGrid = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="h-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-3 auto-rows-[minmax(160px,1fr)] max-h-[calc(100vh-200px)]"
+      className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-3 auto-rows-[minmax(140px,auto)] lg:auto-rows-[minmax(185px,1fr)] lg:h-full lg:max-h-[calc(100vh-200px)]"
     >
-      <div className="md:col-span-2 lg:col-span-2 lg:row-span-2">
+      <div className="md:col-span-2 lg:col-span-2 lg:row-span-2 lg:order-1">
         <HeroCard />
       </div>
 
-      <div className="md:col-span-1 lg:col-span-1 lg:row-span-2">
-        <WorkCard />
-      </div>
-
-      <div className="md:col-span-1 lg:col-span-1">
-        <MusicCard />
-      </div>
-
-      <div className="md:col-span-1 lg:col-span-1 lg:row-span-1">
-        <SkillsCard />
-      </div>
-
-      <div className="md:col-span-1 lg:col-span-1">
-        <ReadingCard />
-      </div>
-
-      <div className="md:col-span-2 lg:col-span-2">
+      <div className="md:col-span-2 lg:col-span-2 lg:order-6">
         <AboutCard />
       </div>
 
-      <div className="md:col-span-1 lg:col-span-1 lg:row-span-2">
-        <ContactCard />
+      <div className="md:col-span-1 lg:col-span-1 lg:row-span-2 lg:order-2">
+        <WorkCard />
       </div>
 
-      <div className="md:col-span-3 lg:col-span-3 lg:row-span-1">
+      <div className="md:col-span-3 lg:col-span-3 lg:row-span-1 lg:order-8">
         <ProjectsCard />
+      </div>
+
+      <div className="md:col-span-1 lg:col-span-1 lg:row-span-1 lg:order-4">
+        <SkillsCard />
+      </div>
+
+      <div className="md:col-span-1 lg:col-span-1 lg:order-5">
+        <ReadingCard />
+      </div>
+
+      <div className="md:col-span-1 lg:col-span-1 lg:order-3">
+        <MusicCard />
+      </div>
+
+      <div className="md:col-span-1 lg:col-span-1 lg:row-span-2 lg:order-7">
+        <ContactCard />
       </div>
     </motion.div>
   );

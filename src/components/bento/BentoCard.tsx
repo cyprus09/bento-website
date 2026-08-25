@@ -6,7 +6,12 @@ import { ReactNode } from "react";
 interface BentoCardProps {
   children: ReactNode;
   className?: string;
+  /** Full-bleed gradient background, e.g. for the hero card. Overrides the default glass surface. */
   gradient?: string;
+  /** Full-bleed solid background, e.g. "bg-terracotta". Overrides the default glass surface. */
+  background?: string;
+  /** Subtle radial glow shown on hover, e.g. "from-blue-400/20 to-cyan-400/10". */
+  hoverGlow?: string;
   onClick?: () => void;
   isClickable?: boolean;
 }
@@ -23,7 +28,7 @@ const cardVariants: Variants = {
   },
 };
 
-const BentoCard = ({ children, className = "", gradient, onClick, isClickable = false }: BentoCardProps) => {
+const BentoCard = ({ children, className = "", gradient, background, hoverGlow, onClick, isClickable = false }: BentoCardProps) => {
   return (
     <motion.div
       variants={cardVariants}
@@ -35,18 +40,16 @@ const BentoCard = ({ children, className = "", gradient, onClick, isClickable = 
       whileTap={isClickable ? { scale: 0.98 } : {}}
       onClick={onClick}
       className={`
-        relative h-full w-full rounded-3xl bg-gradient-to-br ${gradient}
-        border border-orange-200/30 dark:border-orange-800/30 backdrop-blur-sm
-        shadow-lg shadow-orange-500/10 dark:shadow-orange-900/20
-        overflow-hidden group
+        relative h-full w-full rounded-3xl overflow-hidden group
+        ${gradient ? `bg-gradient-to-br ${gradient}` : background ? background : "glass-surface"}
         ${isClickable ? "cursor-pointer" : ""}
         ${className}
       `}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-transparent dark:from-white/5 dark:to-transparent" />
-
-      {isClickable && (
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-red-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      {hoverGlow && (
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${hoverGlow} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+        />
       )}
 
       <div className="relative z-10 h-full p-4 lg:p-6 flex flex-col">{children}</div>

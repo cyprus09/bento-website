@@ -3,6 +3,7 @@ import BentoCard from "@/components/bento/BentoCard";
 import { BookOpen } from "lucide-react";
 import Image from "next/image";
 import { books } from "../../data/booksData";
+import { accent } from "@/data/accentColors";
 
 const ReadingCard = () => {
   const [currentBookIndex, setCurrentBookIndex] = useState(0);
@@ -27,23 +28,18 @@ const ReadingCard = () => {
   const currentBook = books[currentBookIndex];
 
   return (
-    <BentoCard
-      gradient={`${currentBook.color}`}
-      className="text-white dark:text-orange-200 cursor-pointer hover:scale-105"
-      isClickable={true}
-    >
-      <div className="hidden from-red-400 to-orange-400"/>
+    <BentoCard hoverGlow={accent.glow} className="text-gray-900 dark:text-gray-100" isClickable={true}>
       <div className="flex flex-col h-full">
         <div className="flex items-center gap-3 mb-3">
-          <div className="p-1 bg-orange-500/20 rounded-lg">
-            <BookOpen className="w-5 h-5 text-orange-800 dark:text-orange-200" />
+          <div className={`p-1 rounded-lg ${accent.iconBg}`}>
+            <BookOpen className={`w-5 h-5 ${accent.iconText}`} />
           </div>
           <h3 className="font-semibold text-sm">Currently Reading</h3>
         </div>
 
         <div className="flex-1 flex flex-col justify-center">
           <div className="flex items-center gap-3">
-            <div className="relative w-14 h-14 bg-white/20 rounded-lg overflow-hidden group transition-opacity duration-2000">
+            <div className="relative w-14 h-14 rounded-lg overflow-hidden group transition-opacity duration-2000">
               <Image
                 src={currentBook.cover}
                 alt={`${currentBook.title} artwork`}
@@ -62,7 +58,7 @@ const ReadingCard = () => {
                 {currentBook.title}
               </h4>
               <p
-                className={`text-xs transition-opacity duration-2000 ${isTransitioning ? "opacity-0" : "opacity-100"}`}
+                className={`text-gray-500 dark:text-gray-400 text-xs transition-opacity duration-2000 ${isTransitioning ? "opacity-0" : "opacity-100"}`}
                 title={currentBook.author}
               >
                 {currentBook.author}
@@ -77,7 +73,7 @@ const ReadingCard = () => {
               <div
                 key={index}
                 className={`w-1.5 h-1.5 rounded-full transition-all duration-2000 ${
-                  index === currentBookIndex ? "bg-white" : "bg-white/10"
+                  index === currentBookIndex ? accent.bullet : "bg-gray-300 dark:bg-white/20"
                 }`}
               />
             ))}
