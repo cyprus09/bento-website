@@ -41,7 +41,7 @@ const AnimatedBackground = () => {
           floatY: 0,
           size: Math.random() * 3 + 1,
           opacity: Math.random() * 0.6 + 0.2,
-          color: Math.random() > 0.5 ? 'rgba(249, 115, 22, ' : 'rgba(234, 88, 12, ',
+          color: Math.random() > 0.5 ? 'rgba(217, 119, 87, ' : 'rgba(204, 180, 153, ',
           floatSpeedX: (Math.random() - 0.5) * 0.5,
           floatSpeedY: (Math.random() - 0.5) * 0.5,
           floatRange: Math.random() * 30 + 20,
@@ -134,7 +134,7 @@ const AnimatedBackground = () => {
 
           if (particleDistance < 100) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(249, 115, 22, ${0.1 * (1 - particleDistance / 100)})`;
+            ctx.strokeStyle = `rgba(187, 108, 67, ${0.1 * (1 - particleDistance / 100)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
@@ -145,7 +145,7 @@ const AnimatedBackground = () => {
 
       if (mousePosition.x && mousePosition.y) {
         ctx.beginPath();
-        ctx.strokeStyle = 'rgba(249, 115, 22, 0.2)';
+        ctx.strokeStyle = 'rgba(187, 108, 67, 0.2)';
         ctx.lineWidth = 1;
         ctx.arc(mousePosition.x, mousePosition.y, 1, 0, Math.PI * 2);
         ctx.stroke();
@@ -154,7 +154,7 @@ const AnimatedBackground = () => {
           mousePosition.x, mousePosition.y, 0,
           mousePosition.x, mousePosition.y, 60
         );
-        gradient.addColorStop(0, 'rgba(249, 115, 22, 0.1)');
+        gradient.addColorStop(0, 'rgba(187, 108, 67, 0.1)');
         gradient.addColorStop(1, 'transparent');
         
         ctx.fillStyle = gradient;

@@ -7,19 +7,21 @@ const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  // Reads localStorage/matchMedia, which can't run during render — must sync theme state on mount.
   useEffect(() => {
-    setMounted(true);
-    
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsDark(true);
       document.documentElement.classList.add('dark');
     } else {
       setIsDark(false);
       document.documentElement.classList.remove('dark');
     }
+
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
@@ -37,21 +39,19 @@ const ThemeToggle = () => {
 
   // Prevent hydration mismatch
   if (!mounted) {
-    return (
-      <div className="p-2 rounded-lg bg-card border border-border w-9 h-9" />
-    );
+    return <div className="glass-surface rounded-xl w-9 h-9" />;
   }
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-xl bg-white/80 dark:bg-orange-900/80 border border-orange-200 dark:border-orange-700 hover:bg-orange-50 dark:hover:bg-orange-800 transition-all duration-200 shadow-lg shadow-orange-500/10"
+      className="glass-surface p-2 rounded-xl hover:bg-white/90 dark:hover:bg-gray-800/70 transition-colors duration-200"
       aria-label="Toggle theme"
     >
       {isDark ? (
-        <Sun className="w-5 h-5 text-orange-600 dark:text-orange-300" />
+        <Sun className="w-5 h-5 text-terracotta dark:text-tan" />
       ) : (
-        <Moon className="w-5 h-5 text-orange-700" />
+        <Moon className="w-5 h-5 text-gray-600" />
       )}
     </button>
   );
