@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Github } from 'lucide-react';
 import { projects } from '@/data/projectData';
@@ -8,9 +9,24 @@ import { accent } from "@/data/accentColors";
 interface ProjectsModalProps {
   isOpen: boolean;
   onClose: () => void;
+  scrollToTitle?: string | null;
 }
 
-const ProjectsModal = ({ isOpen, onClose }: ProjectsModalProps) => {
+const ProjectsModal = ({ isOpen, onClose, scrollToTitle }: ProjectsModalProps) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  useEffect(() => {
+    if (!isOpen || !scrollToTitle) return;
+
+    const raf = requestAnimationFrame(() => {
+      const target = sectionRefs.current[scrollToTitle];
+      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    return () => cancelAnimationFrame(raf);
+  }, [isOpen, scrollToTitle]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -46,18 +62,21 @@ const ProjectsModal = ({ isOpen, onClose }: ProjectsModalProps) => {
               </div>
             </div>
 
-            <div className="p-6 overflow-y-auto">
+            <div ref={scrollContainerRef} className="p-6 overflow-y-auto">
               <div className="space-y-6">
                 {projects.map((project, index) => {
                   const IconComponent = project.icon;
                   return (
                     <motion.div
                       key={index}
+                      ref={(el) => {
+                        sectionRefs.current[project.title] = el;
+                      }}
                       initial={{ opacity: 0, y: 24 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.08, type: 'spring', damping: 22, stiffness: 260 }}
                       whileHover={{ y: -3 }}
-                      className={`rounded-2xl p-6 border ${accent.sectionBorder} bg-gray-50/80 dark:bg-white/[0.03] transition-shadow hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/30`}
+                      className={`rounded-2xl p-6 border ${accent.sectionBorder} bg-gray-50/80 dark:bg-white/[0.03] transition-shadow hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/30 scroll-mt-6`}
                     >
                       <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                         <div className="flex-1">

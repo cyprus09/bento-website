@@ -28,7 +28,7 @@ const WorkCard = () => {
             </div>
           </div>
 
-          <div className="flex-1 flex flex-col justify-top space-y-3">
+          <div className="flex-1 flex flex-col justify-evenly">
             {experienceCard.map((exp, index) => (
               <div key={index} className="text-left">
                 <div className="text-sm font-medium">{exp.title}</div>

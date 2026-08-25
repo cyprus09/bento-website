@@ -20,6 +20,7 @@ export const skillCategories = [
       "Git",
       "GitHub",
       "GitHub Actions",
+      "GraphQL",
       "Redis",
       "Docker",
       "AWS",

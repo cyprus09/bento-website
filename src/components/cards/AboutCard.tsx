@@ -13,7 +13,7 @@ const AboutCard = () => {
           <div>
             <h2 className="text-xl font-semibold mb-2">About Me</h2>
             <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-              Currently learning Fullstack, System Design and GenAI. Excited to talk and connect with new passionate people about technology!
+              Software Engineer exploring System Design and GenAI, with a growing interest in building AI-native products. Always happy to connect.
             </p>
           </div>
 

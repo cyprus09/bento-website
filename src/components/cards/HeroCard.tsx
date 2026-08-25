@@ -36,7 +36,7 @@ const HeroCard = () => {
           </div>
           <div className="flex items-center gap-1">
             <MapPin className="w-3 h-3" />
-            <span>Gurgaon, IN</span>
+            <span>New Delhi, IN</span>
           </div>
         </div>
       </div>
