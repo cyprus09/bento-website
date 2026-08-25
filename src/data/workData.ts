@@ -36,8 +36,10 @@ export const experienceModal = [
     companyDescription:
       "Sprinklr is a leading customer experience management platform serving enterprise clients worldwide.",
     achievements: [
-      "Building SDK for client customization capabilities",
-      "Working with ReactJS, TypeScript, and GraphQL",
+      "Revamped the contest and events module, live across 40+ countries for a Fortune 100 client's forums, serving 30M+ users",
+      "Sole contributor of the Survey repo, an enterprise form platform serving 15+ enterprise clients, processing 60K+ responses/month",
+      "Identified inconsistent SDK onboarding and built an LLM-powered pipeline that decomposes requirements, matches the widget library, and auto-scaffolds new widgets, cutting onboarding time 40% and dev effort 60%",
+      "Redesigned gamification engine with admin-configurable scoring rules and optimized GraphQL aggregation for multidimensional scoring, scaling to 50K+ users",
     ],
   },
   {
@@ -55,7 +57,7 @@ export const experienceModal = [
     achievements: [
       "Engineered regression testing tool with 90%+ precision",
       "Architected high performance system processing 10K+ files and 60K+ import statements",
-      "Created CI/CD risk-assessment pipeline reducing post-deployment regressions by 25%",
+      "Architected CI/CD risk-assessment pipeline integrating GitLab workflows with vector embeddings and cosine similarity matching, reducing post-deployment regressions by 20%",
     ],
   },
   {

@@ -1,6 +1,21 @@
-import { Database, Server, Code, Globe } from "lucide-react";
+import { Database, Server, Code, Globe, Cpu } from "lucide-react";
 
 export const projects = [
+  {
+    title: "LLM Inference Lab",
+    category: "Machine Learning Systems",
+    tech: ["Python", "PyTorch", "Qwen2.5/3B", "MPS"],
+    description:
+      "A terminal-based LLM inference toolkit with per-token entropy tracking and attention-sink detection to characterize context quality and generation confidence.",
+    highlights: [
+      "Built terminal-based LLM inference toolkit using Qwen2.5/3B on PyTorch/MPS",
+      "Implemented per-token entropy tracking and attention-sink detection",
+      "Implemented KV-cached speculative decoding for faster generation",
+      "Built a unified CLI with entropy-guided adaptive drafting",
+    ],
+    githubUrl: "https://github.com/cyprus09/llm-inference-lab",
+    icon: Cpu,
+  },
   {
     title: "Student Management Portal",
     category: "Full-Stack Web Application",
