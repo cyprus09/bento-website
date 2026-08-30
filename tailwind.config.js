@@ -19,16 +19,13 @@ module.exports = {
     },
     extend: {
       colors: {
-        mist: '#EBEFEE',
-        cream: '#FBF3EA',
         tan: '#CCB499',
         clay: '#C8906D',
         terracotta: '#BB6C43',
         claudeOrange: '#D97757',
-        espresso: '#3D2E22',
         walnut: '#4A413C',
-        burntOrange: '#3A2317',
-        emberOrange: '#5C3624',
+        offwhite: '#EEEEE7',
+        nearblack: '#1B1B1B',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -37,6 +34,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
     },
   },

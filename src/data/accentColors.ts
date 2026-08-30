@@ -9,11 +9,11 @@ interface AccentTheme {
 }
 
 export const accent: AccentTheme = {
-  iconBg: "bg-terracotta/15 dark:bg-terracotta/20",
-  iconText: "text-terracotta dark:text-clay",
-  chip: "bg-tan/20 dark:bg-terracotta/10 text-walnut dark:text-tan border-tan/50 dark:border-terracotta/20",
-  modalHeader: "bg-claudeOrange",
-  sectionBorder: "border-tan/50 dark:border-terracotta/20",
-  bullet: "bg-terracotta",
-  glow: "from-terracotta/10 to-walnut/5",
+  iconBg: "bg-nearblack/10 dark:bg-offwhite/10",
+  iconText: "text-nearblack dark:text-offwhite",
+  chip: "bg-nearblack/5 dark:bg-offwhite/10 text-nearblack dark:text-offwhite border-nearblack/20 dark:border-offwhite/20",
+  modalHeader: "bg-nearblack dark:bg-offwhite",
+  sectionBorder: "border-nearblack/20 dark:border-offwhite/20",
+  bullet: "bg-nearblack dark:bg-offwhite",
+  glow: "from-nearblack/10 to-nearblack/5 dark:from-offwhite/10 dark:to-offwhite/5",
 };

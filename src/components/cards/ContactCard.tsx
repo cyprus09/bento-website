@@ -1,5 +1,5 @@
 import BentoCard from "@/components/bento/BentoCard";
-import { Mail, Github, Linkedin, FileUser, BookOpenText } from "lucide-react";
+import { MessageCircle, Github, Linkedin, FileUser, BookOpenText, Mail } from "lucide-react";
 import { accent } from "@/data/accentColors";
 
 const ContactCard = () => {
@@ -12,17 +12,20 @@ const ContactCard = () => {
   ];
 
   return (
-    <BentoCard hoverGlow={accent.glow} className="text-gray-900 dark:text-gray-100" isClickable={false}>
-      <div className="flex items-start justify-between mb-2">
-        <div>
-          <h3 className="font-semibold text-xl mb-1">Let&apos;s Connect</h3>
-          <p className="text-gray-500 dark:text-gray-400 text-sm">
-            Always open to discussing new opportunities and interesting projects.
-          </p>
+    <BentoCard
+      hoverGlow={accent.glow}
+      className="text-gray-900 dark:text-gray-100"
+      contentClassName="p-4 lg:p-6 lg:py-3 lg:mt-2"
+      isClickable={false}
+    >
+      <div className="flex items-center gap-3 mb-3">
+        <div className={`p-2 rounded-lg ${accent.iconBg}`}>
+          <MessageCircle className={`w-4 h-4 ${accent.iconText}`} />
         </div>
+        <h3 className="font-serif font-semibold text-xl">Let&apos;s Connect</h3>
       </div>
 
-      <div className="space-y-1.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
         {contacts.map((contact, index) => {
           const IconComponent = contact.icon;
           return (

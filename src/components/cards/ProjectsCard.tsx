@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BentoCard from "@/components/bento/BentoCard";
-import { Code } from "lucide-react";
+import { Code, ChevronRight } from "lucide-react";
 import ProjectsModal from "@/components/modals/ProjectsModal";
 import { accent } from "@/data/accentColors";
 import { projects } from "@/data/projectData";
@@ -28,20 +28,20 @@ const ProjectsCard = () => {
             <div className={`p-2 rounded-lg ${accent.iconBg}`}>
               <Code className={`w-4 h-4 ${accent.iconText}`} />
             </div>
-            <div>
-              <h3 className="font-semibold text-lg">Featured Projects</h3>
-              <p className="text-gray-500 dark:text-gray-400 text-xs">Click to expand</p>
-            </div>
+            <h3 className="font-serif font-semibold text-xl flex items-center gap-1">
+              Projects
+              <ChevronRight className="w-5 h-5 text-gray-400 dark:text-gray-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+            </h3>
           </div>
 
           <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {featured.map((project) => {
+            {featured.map(project => {
               const Icon = project.icon;
               return (
                 <button
                   key={project.title}
                   type="button"
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation();
                     openModal(project.title);
                   }}
@@ -50,7 +50,7 @@ const ProjectsCard = () => {
                   <div className={`p-1.5 rounded-lg w-fit ${accent.iconBg}`}>
                     <Icon className={`w-4 h-4 ${accent.iconText}`} />
                   </div>
-                  <span className="text-xs font-medium leading-snug line-clamp-2">{project.title}</span>
+                  <span className="text-sm font-medium leading-snug line-clamp-2">{project.title}</span>
                 </button>
               );
             })}
@@ -58,11 +58,7 @@ const ProjectsCard = () => {
         </div>
       </BentoCard>
 
-      <ProjectsModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        scrollToTitle={scrollToTitle}
-      />
+      <ProjectsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} scrollToTitle={scrollToTitle} />
     </>
   );
 };

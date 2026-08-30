@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Sun, Moon } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Sun, Moon } from "lucide-react";
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
@@ -9,16 +9,13 @@ const ThemeToggle = () => {
 
   // Reads localStorage/matchMedia, which can't run during render — must sync theme state on mount.
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const shouldUseDark = savedTheme === "dark" || (!savedTheme && prefersDark);
 
-    if (savedTheme === 'dark') {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setIsDark(false);
-      document.documentElement.classList.remove('dark');
-    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsDark(shouldUseDark);
+    document.documentElement.classList.toggle("dark", shouldUseDark);
 
     setMounted(true);
   }, []);
@@ -26,13 +23,13 @@ const ThemeToggle = () => {
   const toggleTheme = () => {
     const newTheme = !isDark;
     setIsDark(newTheme);
-    
+
     if (newTheme) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   };
 
@@ -47,11 +44,7 @@ const ThemeToggle = () => {
       className="glass-surface p-2 rounded-xl hover:bg-white/90 dark:hover:bg-gray-800/70 transition-colors duration-200"
       aria-label="Toggle theme"
     >
-      {isDark ? (
-        <Sun className="w-5 h-5 text-terracotta dark:text-tan" />
-      ) : (
-        <Moon className="w-5 h-5 text-gray-600" />
-      )}
+      {isDark ? <Sun className="w-5 h-5 text-offwhite" /> : <Moon className="w-5 h-5 text-nearblack" />}
     </button>
   );
 };

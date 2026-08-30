@@ -28,18 +28,23 @@ const ReadingCard = () => {
   const currentBook = books[currentBookIndex];
 
   return (
-    <BentoCard hoverGlow={accent.glow} className="text-gray-900 dark:text-gray-100" isClickable={true}>
+    <BentoCard
+      hoverGlow={accent.glow}
+      className="text-gray-900 dark:text-gray-100"
+      contentClassName="p-4 lg:p-6 lg:py-3 lg:mt-3"
+      isClickable={true}
+    >
       <div className="flex flex-col h-full">
         <div className="flex items-center gap-3 mb-3">
           <div className={`p-1 rounded-lg ${accent.iconBg}`}>
             <BookOpen className={`w-5 h-5 ${accent.iconText}`} />
           </div>
-          <h3 className="font-semibold text-sm">Currently Reading</h3>
+          <h3 className="font-serif font-semibold text-lg">Currently Reading</h3>
         </div>
 
         <div className="flex-1 flex flex-col justify-center">
           <div className="flex items-center gap-3">
-            <div className="relative w-14 h-14 rounded-lg overflow-hidden group transition-opacity duration-2000">
+            <div className="relative w-14 h-20 rounded-lg overflow-hidden group transition-opacity duration-2000">
               <Image
                 src={currentBook.cover}
                 alt={`${currentBook.title} artwork`}
@@ -49,14 +54,14 @@ const ReadingCard = () => {
             </div>
 
             <div className="flex-1 min-w-0">
-              <h4
-                className={`font-medium text-xs transition-opacity duration-2000 ${
+              <h3
+                className={`font-medium text-sm transition-opacity duration-2000 ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}
                 title={currentBook.title}
               >
                 {currentBook.title}
-              </h4>
+              </h3>
               <p
                 className={`text-gray-500 dark:text-gray-400 text-xs transition-opacity duration-2000 ${isTransitioning ? "opacity-0" : "opacity-100"}`}
                 title={currentBook.author}
@@ -67,7 +72,7 @@ const ReadingCard = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-around text-xs mt-1">
+        <div className="flex items-center justify-around text-xs mt-1 mb-3">
           <div className="flex gap-1">
             {books.map((_, index) => (
               <div

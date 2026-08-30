@@ -25,7 +25,7 @@
 
   /* Shared neutral glass surface for bento cards and modals */
   .glass-surface {
-    @apply bg-white/70 dark:bg-emberOrange/70 backdrop-blur-md;
+    @apply bg-white/70 dark:bg-nearblack/70 backdrop-blur-md;
     @apply border border-gray-200/70 dark:border-white/10;
     @apply shadow-lg shadow-gray-900/5 dark:shadow-black/40;
   }
@@ -35,6 +35,11 @@
     animation: equalize 0.9s ease-in-out infinite;
     transform-origin: bottom;
   }
+
+  /* Dog walking across the bottom of the screen */
+  .walking-dog {
+    animation: walk-across 18s linear infinite;
+  }
 }
 
 @keyframes equalize {
@@ -43,6 +48,15 @@
   }
   50% {
     transform: scaleY(1);
+  }
+}
+
+@keyframes walk-across {
+  from {
+    left: -5%;
+  }
+  to {
+    left: 105%;
   }
 }
 

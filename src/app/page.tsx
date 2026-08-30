@@ -1,20 +1,17 @@
-import BentoGrid from '@/components/bento/BentoGrid';
-import ThemeToggle from '@/ui/ThemeToggle';
-import AnimatedBackground from '@/ui/AnimatedBackground';
+import BentoGrid from "@/components/bento/BentoGrid";
+import ThemeToggle from "@/ui/ThemeToggle";
+import AnimatedBackground from "@/ui/AnimatedBackground";
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen bg-stone-50 dark:bg-burntOrange transition-colors duration-300 flex flex-col lg:overflow-hidden">
+    <main className="relative min-h-screen bg-offwhite dark:bg-nearblack transition-colors duration-300 flex flex-col items-center justify-center lg:overflow-hidden">
       <AnimatedBackground />
-      
-      <div className="relative z-10 container mx-auto px-4 py-4 lg:px-6 lg:py-6 max-w-6xl flex-1 flex flex-col">
-        <div className="flex justify-between items-center mb-4 lg:mb-6">
-          <ThemeToggle />
-        </div>
+      <div className="absolute top-4 left-4 lg:top-6 lg:left-6 z-20">
+        <ThemeToggle />
+      </div>
 
-        <div className="flex-1">
-          <BentoGrid />
-        </div>
+      <div className="relative z-10 container mx-auto px-4 py-16 lg:px-6 lg:py-0 max-w-6xl lg:scale-[1.05]">
+        <BentoGrid />
       </div>
     </main>
   );

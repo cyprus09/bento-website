@@ -1,15 +1,15 @@
 export const playlist = [
   {
-    title: "ten",
-    artist: "Fred again..",
-    album: "ten",
-    artwork: "/images/album_art/fred_again.png",
+    title: "Giorgio by Moroder",
+    artist: "Daft Punk",
+    album: "Random Access Memories",
+    artwork: "/images/album_art/daft_punk.png",
   },
   {
-    title: "Dreams",
-    artist: "Fleetwood Mac",
-    album: "Rumours",
-    artwork: "/images/album_art/fleetwood_mac.png",
+    title: "Nightbird",
+    artist: "Stevie Nicks",
+    album: "The Wild Heart",
+    artwork: "/images/album_art/stevie_nicks.png",
   },
   {
     title: "Pyramids",

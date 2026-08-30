@@ -1,10 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Github } from 'lucide-react';
-import { projects } from '@/data/projectData';
+import { useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Github } from "lucide-react";
+import { projects } from "@/data/projectData";
 import { accent } from "@/data/accentColors";
+import ModalPortal from "./ModalPortal";
 
 interface ProjectsModalProps {
   isOpen: boolean;
@@ -21,13 +22,14 @@ const ProjectsModal = ({ isOpen, onClose, scrollToTitle }: ProjectsModalProps) =
 
     const raf = requestAnimationFrame(() => {
       const target = sectionRefs.current[scrollToTitle];
-      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
     return () => cancelAnimationFrame(raf);
   }, [isOpen, scrollToTitle]);
 
   return (
+    <ModalPortal>
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -43,18 +45,20 @@ const ProjectsModal = ({ isOpen, onClose, scrollToTitle }: ProjectsModalProps) =
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: 'spring', damping: 26, stiffness: 300 }}
-            className="relative w-full max-w-4xl max-h-[90vh] bg-white dark:bg-emberOrange rounded-3xl shadow-2xl overflow-hidden flex flex-col"
+            transition={{ type: "spring", damping: 26, stiffness: 300 }}
+            className="relative w-full max-w-4xl max-h-[90vh] bg-white dark:bg-nearblack rounded-3xl shadow-2xl overflow-hidden flex flex-col"
           >
-            <div className={`shrink-0 ${accent.modalHeader} p-6 text-espresso`}>
+            <div className={`shrink-0 ${accent.modalHeader} p-6 text-offwhite dark:text-nearblack`}>
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-2xl font-bold mb-1">Featured Projects</h2>
-                  <p className="text-espresso/80 text-sm">Showcasing technical expertise and problem-solving skills</p>
+                  <h2 className="font-serif text-2xl font-bold mb-1">Projects</h2>
+                  <p className="text-offwhite/80 dark:text-nearblack/80 text-sm">
+                    Showcasing technical expertise and problem-solving skills
+                  </p>
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 rounded-lg bg-espresso/10 hover:bg-espresso/20 transition-colors"
+                  className="p-2 rounded-lg bg-offwhite/10 hover:bg-offwhite/20 dark:bg-nearblack/10 dark:hover:bg-nearblack/20 transition-colors"
                   aria-label="Close"
                 >
                   <X className="w-5 h-5" />
@@ -69,12 +73,12 @@ const ProjectsModal = ({ isOpen, onClose, scrollToTitle }: ProjectsModalProps) =
                   return (
                     <motion.div
                       key={index}
-                      ref={(el) => {
+                      ref={el => {
                         sectionRefs.current[project.title] = el;
                       }}
                       initial={{ opacity: 0, y: 24 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.08, type: 'spring', damping: 22, stiffness: 260 }}
+                      transition={{ delay: index * 0.08, type: "spring", damping: 22, stiffness: 260 }}
                       whileHover={{ y: -3 }}
                       className={`rounded-2xl p-6 border ${accent.sectionBorder} bg-gray-50/80 dark:bg-white/[0.03] transition-shadow hover:shadow-lg hover:shadow-black/5 dark:hover:shadow-black/30 scroll-mt-6`}
                     >
@@ -85,7 +89,7 @@ const ProjectsModal = ({ isOpen, onClose, scrollToTitle }: ProjectsModalProps) =
                               <IconComponent className={`w-5 h-5 ${accent.iconText}`} />
                             </div>
                             <div>
-                              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                              <h3 className="font-serif text-lg font-semibold text-gray-900 dark:text-gray-100">
                                 {project.title}
                               </h3>
                               <p className={`font-medium text-sm ${accent.iconText}`}>{project.category}</p>
@@ -122,9 +126,7 @@ const ProjectsModal = ({ isOpen, onClose, scrollToTitle }: ProjectsModalProps) =
                       </div>
 
                       <div className="mb-4">
-                        <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1 text-sm">
-                          Project Overview
-                        </h4>
+                        <h4 className="font-medium text-gray-900 dark:text-gray-100 mb-1 text-sm">Project Overview</h4>
                         <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                           {project.description}
                         </p>
@@ -162,6 +164,7 @@ const ProjectsModal = ({ isOpen, onClose, scrollToTitle }: ProjectsModalProps) =
         </div>
       )}
     </AnimatePresence>
+    </ModalPortal>
   );
 };
 

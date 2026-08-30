@@ -28,18 +28,23 @@ const MusicCard = () => {
   const currentTrack = playlist[currentTrackIndex];
 
   return (
-    <BentoCard hoverGlow={accent.glow} className="text-gray-900 dark:text-gray-100" isClickable={true}>
+    <BentoCard
+      hoverGlow={accent.glow}
+      className="text-gray-900 dark:text-gray-100"
+      contentClassName="p-4 lg:p-6 lg:py-3 lg:mt-2"
+      isClickable={true}
+    >
       <div className="flex flex-col h-full">
         <div className="flex items-center gap-3 mb-3">
           <div className={`p-2 rounded-lg ${accent.iconBg}`}>
             <Music className={`w-5 h-5 ${accent.iconText}`} />
           </div>
-          <h3 className="font-semibold text-sm">Songs on Repeat</h3>
+          <h3 className="font-serif font-semibold text-lg">Songs on Repeat</h3>
         </div>
 
         <div className="flex-1 flex flex-col justify-center">
           <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 rounded-lg overflow-hidden group">
+            <div className="relative w-16 h-16 rounded-lg overflow-hidden group">
               <Image
                 src={currentTrack.artwork}
                 alt={`${currentTrack.album} artwork`}
@@ -48,18 +53,18 @@ const MusicCard = () => {
               />
 
               <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                <div className="flex gap-1 items-end h-4">
+                <div className="flex gap-1 items-end h-3">
                   <div
                     className="w-1 bg-white rounded-full animate-equalize"
-                    style={{ height: "16px", animationDelay: "0ms" }}
+                    style={{ height: "13px", animationDelay: "0ms" }}
                   ></div>
                   <div
                     className="w-1 bg-white rounded-full animate-equalize"
-                    style={{ height: "16px", animationDelay: "0.3s" }}
+                    style={{ height: "13px", animationDelay: "0.3s" }}
                   ></div>
                   <div
                     className="w-1 bg-white rounded-full animate-equalize"
-                    style={{ height: "16px", animationDelay: "0.15s" }}
+                    style={{ height: "13px", animationDelay: "0.15s" }}
                   ></div>
                 </div>
               </div>
@@ -67,7 +72,7 @@ const MusicCard = () => {
 
             <div className="flex-1 min-w-0">
               <h4
-                className={`font-medium text-xs truncate transition-opacity duration-2000 ${
+                className={`font-medium text-sm truncate transition-opacity duration-2000 ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}
                 title={currentTrack.title}
@@ -94,7 +99,7 @@ const MusicCard = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-around text-xs mt-3">
+        <div className="flex items-center justify-around text-xs mt-3 mb-3">
           <div className="flex gap-1">
             {playlist.map((_, index) => (
               <div

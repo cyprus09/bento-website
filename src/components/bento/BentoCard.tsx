@@ -14,6 +14,8 @@ interface BentoCardProps {
   hoverGlow?: string;
   onClick?: () => void;
   isClickable?: boolean;
+  /** Override the default inner content padding, e.g. "p-4 lg:p-8" for a taller card. */
+  contentClassName?: string;
 }
 
 const cardVariants: Variants = {
@@ -28,7 +30,16 @@ const cardVariants: Variants = {
   },
 };
 
-const BentoCard = ({ children, className = "", gradient, background, hoverGlow, onClick, isClickable = false }: BentoCardProps) => {
+const BentoCard = ({
+  children,
+  className = "",
+  gradient,
+  background,
+  hoverGlow,
+  onClick,
+  isClickable = false,
+  contentClassName = "p-4 lg:p-6",
+}: BentoCardProps) => {
   return (
     <motion.div
       variants={cardVariants}
@@ -52,7 +63,7 @@ const BentoCard = ({ children, className = "", gradient, background, hoverGlow, 
         />
       )}
 
-      <div className="relative z-10 h-full p-4 lg:p-6 flex flex-col">{children}</div>
+      <div className={`relative z-10 h-full flex flex-col ${contentClassName}`}>{children}</div>
     </motion.div>
   );
 };

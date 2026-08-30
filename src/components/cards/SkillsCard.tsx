@@ -1,5 +1,5 @@
 import BentoCard from "@/components/bento/BentoCard";
-import { Zap } from "lucide-react";
+import { Zap, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import SkillsModal from "../modals/SkillsModal";
 import { accent } from "@/data/accentColors";
@@ -13,6 +13,11 @@ const featuredSkills = [
   "Golang",
   "gRPC",
   "PostgreSQL",
+  "Next.js",
+  "Docker",
+  "AWS",
+  "Redis",
+  "Python",
 ];
 
 const SkillsCard = () => {
@@ -23,6 +28,7 @@ const SkillsCard = () => {
       <BentoCard
         hoverGlow={accent.glow}
         className="text-gray-900 dark:text-gray-100"
+        contentClassName="p-4 lg:p-6 lg:py-10"
         isClickable={true}
         onClick={() => setIsModalOpen(true)}
       >
@@ -31,17 +37,17 @@ const SkillsCard = () => {
             <div className={`p-2 rounded-lg ${accent.iconBg}`}>
               <Zap className={`w-4 h-4 ${accent.iconText}`} />
             </div>
-            <h3 className="font-semibold text-lg">Tech Stack</h3>
-            <span className="ml-auto text-gray-500 dark:text-gray-400 text-xs whitespace-nowrap">
-              +{skillCategories.reduce((sum, c) => sum + c.skills.length, 0) - featuredSkills.length} more
-            </span>
+            <h3 className="font-serif font-semibold text-xl flex items-center gap-1">
+              Tech Stack
+              <ChevronRight className="w-5 h-5 text-gray-400 dark:text-gray-500 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+            </h3>
           </div>
 
-          <div className="flex flex-wrap content-start gap-1.5 pb-1">
-            {featuredSkills.map((skill) => (
+          <div className="flex-1 flex flex-wrap content-center gap-3 mt-2">
+            {featuredSkills.map(skill => (
               <span
                 key={skill}
-                className={`px-2.5 py-1 rounded-lg text-xs font-medium border ${accent.chip} whitespace-nowrap`}
+                className={`font-mono px-2 py-1 rounded-lg text-xs font-medium border ${accent.chip} whitespace-nowrap`}
               >
                 {skill}
               </span>
